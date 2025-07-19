@@ -1,0 +1,62 @@
+<div class="button m-7">
+  <%= link_to "Retour", posts_path, class: "btn border-black hover:bg-[#8e5c6e] hover:text-[#EDDDD6]" %>
+</div>
+
+<div class="post text-xl p-25 mx-5 border border-[#fbe1eb] rounded-lg shadow-lg flex flex-col gap-5">
+  <h1 class="text-center text-4xl text-[#76818E] font-bold m-5"><%= @post.title %></h1>
+  <p><%= @post.content %></p>
+  <div class="flex content-end">
+    <div class="infos flex flex-row gap-3 m-7">
+    <p>Lieu : <%= @post.location %></p>
+    <p>Publié le : <%= @post.published_at.strftime("%d/%m/%Y") %></p>
+    </div>
+  </div>
+</div>
+
+  <h3 class="text-center text-2xl text-[#76818E] font-bold m-5">Commentaires <i class="fa-regular fa-comments"></i></h3>
+  <div class="comment container mx-auto p-8 bg-base-200 rounded-lg shadow-lg">
+    <% @post.comments.each do |comment| %>
+      <p><strong><%= comment.author %></strong> : <%= comment.body %></p>
+      <% if comment.response.present? %>
+        <div class="response mt-3 mb-3 p-3 border-l-4 border-[#fbe1eb] bg-rose-50 ml-4">
+          <p><strong>Réponse de l'admin :</strong> <%= comment.response %></p>
+        </div>
+      <% end %>
+
+      <div class="comment-actions mt-2 mb-3">
+        <% if policy(comment).destroy? %>
+          <%= link_to 'Supprimer', post_comment_path(@post, comment), data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce commentaire ?' }, method: :delete, class: "btn btn-sm btn-error" %>
+        <% end %>
+        <% if policy(comment).update? %> <%# Vérifie si l'utilisateur est admin pour pouvoir répondre %>
+          <%= link_to 'Répondre', edit_post_comment_path(@post, comment), class: "btn btn-sm border-black hover:bg-[#8e5c6e] hover:text-[#EDDDD6] ml-2" %>
+        <% end %>
+      </div>
+  <% end %>
+  </div>
+  <h4 class="text-center text-2xl text-[#76818E] font-bold m-5">Laisser un commentaire <i class="fa-solid fa-pen-nib"></i></h4>
+  <div class="comment_form text-center py-3 max-w-2xl mx-auto p-8">
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "erreur") %> a empéché ce commentaire d'être envoyé.</h2>
+      <ul>
+        <% @comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with(model:[@post, @comment]) do |form| %>
+    <p class="mb-4">
+      <%= form.label :author, "Pseudo", class: "label text-[#8e5c6e]" %>
+      <%= form.text_field :author, class: "input input-bordered input-lg w-full" %>
+    </p>
+    <p class="mb-4">
+      <%= form.label :body, "Laisser un commentaire", class: "label text-[#8e5c6e]" %>
+      <%= form.text_area :body, rows: 8, class: "textarea textarea-bordered textarea-lg w-full" %> <%# Hauteur ajustée %>
+    </p>
+    <p>
+      <%= form.submit "Publier", class: "btn border-black hover:bg-[#8e5c6e] hover:text-[#EDDDD6] w-full" %> <%# Bouton pleine largeur %>
+    </p>
+  <% end %>
+</div>

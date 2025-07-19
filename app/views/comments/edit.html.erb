@@ -1,0 +1,30 @@
+<h1>Répondre au commentaire de <%= @comment.author %></h1>
+
+<div class="comment-original bg-gray-100 p-4 rounded-lg mb-6">
+  <p><strong>Commentaire original :</strong></p>
+  <p><%= @comment.body %></p>
+</div>
+
+<% if @comment.errors.any? %>
+  <div id="error_explanation" class="alert alert-error">
+    <h2><%= pluralize(@comment.errors.count, "erreur") %> a empêché la réponse d'être enregistrée :</h2>
+    <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: [@comment.post, @comment]) do |form| %>
+  <div class="form-control mb-4">
+    <%= form.label :response, "Votre réponse", class: "label" %>
+    <%= form.text_area :response, rows: 5, class: "textarea textarea-bordered w-full" %>
+  </div>
+
+  <div class="form-control">
+    <%= form.submit "Enregistrer la réponse", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Retour à l\'article', post_path(@comment.post), class: "btn btn-link mt-4" %>

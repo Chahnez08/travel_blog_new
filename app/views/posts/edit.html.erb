@@ -1,0 +1,44 @@
+<%= form_with(model: @post) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "erreur") %> a empêché cet article d'être enregistré :</h2>
+      <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="post text-xl p-25 mx-5 border border-[#fbe1eb] rounded-lg shadow-lg flex flex-col gap-5"">
+    <div>
+      <%= form.label :title, "Titre :", class: "label text-[#8e5c6e] my-3" %>
+      <%= form.text_field :title, class: "input input-bordered input-lg w-full" %>
+    </div>
+
+    <div>
+      <%= form.label :content, "Contenu :", class: "label text-[#8e5c6e] my-3" %>
+      <%= form.text_area :content, class: "input input-bordered input-lg w-full" %>
+    </div>
+
+    <div>
+      <%= form.label :location, "Lieu :", class: "label text-[#8e5c6e] my-3" %>
+      <%= form.text_field :location, class: "input input-bordered input-lg w-full" %>
+    </div>
+
+    <div>
+      <%= form.label :image_url, "URL de l'image :", class: "label text-[#8e5c6e] my-3" %>
+      <%= form.text_field :image_url, class: "input input-bordered input-lg w-full" %>
+    </div>
+
+    <div>
+      <%= form.label :published_at, "Date de publication :", class: "label text-[#8e5c6e] my-3" %>
+      <%= form.date_field :published_at, class: "input input-bordered input-lg w-100" %>
+    </div>
+
+    <div>
+      <%= form.submit "Mettre à jour l'article", class:"mt-5 btn border-black hover:bg-[#8e5c6e] hover:text-[#EDDDD6]" %>
+    </div>
+  </div>
+
+<% end %>
