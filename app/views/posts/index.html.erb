@@ -23,10 +23,10 @@
 <h2 class="text-[#76818E] text-center font-bold text-4xl my-5 pb-5">Les articles</h2>
 <div class="grid grid-cols-2 gap-4 justify-items-center">
   <% @posts.each do |post| %>
-  <div class="bg-base-100 w-170 shadow-sm mx-auto py-5 px-3">
+  <div class="bg-base-100 w-170 shadow-sm mx-auto py-5 px-3 transition delay-150 duration-300 ease-in-out scale-95 hover:scale-100 hover:sepia-25">
     <%= link_to post_path(post) do %>
       <% if post.photo.attached? %>
-        <%= cl_image_tag post.photo.key, class: "rounded-2xl p-[8px] h-[30vh] object-cover mb-5 mx-auto transition delay-150 duration-300 ease-in-out scale-110 hover:scale-120 hover:sepia-50" %>
+        <%= cl_image_tag post.photo.key, class: "rounded-2xl p-[8px] h-[30vh] object-cover mb-5 mx-auto" %>
       <% else %>
         <p>Aucune image attachée.</p>
       <% end %>
