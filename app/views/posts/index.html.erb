@@ -24,24 +24,24 @@
 <div class="grid grid-cols-2 gap-6 justify-items-center">
   <% @posts.each do |post| %>
   <div class="bg-base-100 w-120 shadow-sm mx-auto py-5 px-3">
-    <div class="post">
+    <%= link_to post_path(post) do %>
       <% if post.photo.attached? %>
-        <%= cl_image_tag post.photo.key, class: "rounded-2xl p-[8px] h-[30vh] object-cover mx-auto" %>
+        <%= cl_image_tag post.photo.key, class: "rounded-2xl p-[8px] h-[30vh] object-cover mx-auto transition delay-150 duration-300 ease-in-out scale-95 hover:scale-100 hover:sepia-50" %>
       <% else %>
         <p>Aucune image attachée.</p>
       <% end %>
-      <h2 class="text-[#76818E] text-center font-bold card-title"><%= link_to post.title, post_path(post) %></h2>
+      <h2 class="text-[#76818E] text-center font-bold card-title transition delay-150 duration-300 ease-in-out hover:text-[#8e5c6e]"><%= post.title %></h2>
       <p class="text-[#76818E] font-bold">Lieu : <%= post.location %></p>
       <p class="text-[#76818E] text-center font-bold pb-2"><i class="fa-regular fa-clock"></i> <%= post.published_at.strftime("%d/%m/%Y") %></p>
       <hr>
       <p class="text-[#A3677F] pt-2"><%= truncate(post.content, length:150) %></p>
+    <% end %>
       <% if policy(post).update? %>
         <%= link_to 'Modifier', edit_post_path(post), class:"btn border-black hover:bg-[#8e5c6e] hover:text-[#EDDDD6] m-3" %>
       <% end %>
       <% if policy(post).destroy? %>
         <%= link_to 'Supprimer', post_path(post), class:"btn border-black hover:bg-[#8e5c6e] hover:text-[#EDDDD6] m-3", data: { confirm: 'Êtes-vous sûr ?' }, method: :delete %>
       <% end %>
-    </div>
   </div>
   <% end %>
 </div>
