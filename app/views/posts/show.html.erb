@@ -4,7 +4,11 @@
 
 <div class="post text-xl p-25 mx-5 border border-[#fbe1eb] rounded-lg shadow-lg flex flex-col gap-5">
   <h1 class="text-center text-4xl text-[#76818E] font-bold m-5"><%= @post.title %></h1>
-  <%= cl_image_tag @post.image_url, height: 300, width: 400, crop: :fill %>
+  <% if @post.photo.attached? %>
+    <%= cl_image_tag @post.photo.key %>
+  <% else %>
+    <p>Aucune image attachée.</p>
+  <% end %>
   <p><%= @post.content %></p>
   <div class="flex content-end">
     <div class="infos flex flex-row gap-3 m-7">

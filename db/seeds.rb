@@ -7,6 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require "open-uri"
 
 user = User.first || User.create!(email: 'demo@example.com', password: 'password', password_confirmation: 'password')
 puts "Utilisateur pour les seeds : #{user.email}"
@@ -20,10 +21,12 @@ post1 = Post.create!(
   title: "Aventure en Patagonie : Randonnée au Fitz Roy",
   content: "Un voyage inoubliable au cœur de la Patagonie argentine, avec des vues époustouflantes sur le mont Fitz Roy. Nous avons passé plusieurs jours à randonner à travers des paysages grandioses, des forêts millénaires aux glaciers scintillants. Chaque lever de soleil était un spectacle de couleurs sur les montagnes emblématiques. Préparez-vous pour des vents forts et des températures fraîches, même en été !",
   location: "El Chaltén, Argentine",
-  image_url: "https://source.unsplash.com/random/800x600?patagonia,fitzroy",
   published_at: 3.months.ago, # Publié il y a 3 mois
   user: user # Associe l'article à l'utilisateur
 )
+file = URI.parse("https://res.cloudinary.com/dwvnu18ce/image/upload/v1747996814/development/7t42eizlq4q6outuv819663ziz8a.png").open
+post1.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+post1.save
 puts "Créé: '#{post1.title}'"
 
 # Post 2
@@ -35,6 +38,9 @@ post2 = Post.create!(
   published_at: 2.months.ago, # Publié il y a 2 mois
   user: user
 )
+file = URI.parse("https://res.cloudinary.com/dwvnu18ce/image/upload/v1747996814/development/7t42eizlq4q6outuv819663ziz8a.png").open
+post2.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+post2.save
 puts "Créé: '#{post2.title}'"
 
 # Post 3
@@ -46,6 +52,9 @@ post3 = Post.create!(
   published_at: 1.month.ago, # Publié il y a 1 mois
   user: user
 )
+file = URI.parse("https://res.cloudinary.com/dwvnu18ce/image/upload/v1747996814/development/7t42eizlq4q6outuv819663ziz8a.png").open
+post3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+post3.save
 puts "Créé: '#{post3.title}'"
 
 # Post 4
@@ -57,6 +66,9 @@ post4 = Post.create!(
   published_at: 2.weeks.ago, # Publié il y a 2 semaines
   user: user
 )
+file = URI.parse("https://res.cloudinary.com/dwvnu18ce/image/upload/v1747996814/development/7t42eizlq4q6outuv819663ziz8a.png").open
+post4.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+post4.save
 puts "Créé: '#{post4.title}'"
 
 # Post 5
@@ -68,6 +80,9 @@ post5 = Post.create!(
   published_at: 1.week.ago, # Publié il y a 1 semaine
   user: user
 )
+file = URI.parse("https://res.cloudinary.com/dwvnu18ce/image/upload/v1747996814/development/7t42eizlq4q6outuv819663ziz8a.png").open
+post5.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+post5.save
 puts "Créé: '#{post5.title}'"
 
 puts 'Articles de blog créés avec succès !'

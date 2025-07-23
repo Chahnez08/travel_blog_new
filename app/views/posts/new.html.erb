@@ -29,10 +29,10 @@
       <%= form.text_area :content, rows: 10, class: "input input-bordered input-lg w-full"  %>
     </p>
 
-    <p>
-      <%= form.label :image_url, "URL de l'image de couverture", class: "label text-[#8e5c6e] my-3" %><br>
-      <%= form.text_field :image_url, class: "input input-bordered input-lg w-full"  %>
-    </p>
+<p>
+  <%= form.label :photo, "Image de couverture", class: "label text-[#8e5c6e] my-3" %><br>
+  <%= form.file_field :photo, class: "input input-bordered input-lg w-full" %>
+</p>
 
     <p>
       <%= form.submit "Publier l'article", class:"mt-5 btn border-black hover:bg-[#8e5c6e] hover:text-[#EDDDD6]" %>

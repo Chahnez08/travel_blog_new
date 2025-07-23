@@ -25,6 +25,11 @@
   <% @posts.each do |post| %>
   <div class="bg-base-100 w-120 shadow-sm mx-auto py-5 px-3">
     <div class="post">
+      <% if post.photo.attached? %>
+        <%= cl_image_tag post.photo.key, class: "rounded-2xl p-[8px] h-[30vh] object-cover mx-auto" %>
+      <% else %>
+        <p>Aucune image attachée.</p>
+      <% end %>
       <h2 class="text-[#76818E] text-center font-bold card-title"><%= link_to post.title, post_path(post) %></h2>
       <p class="text-[#76818E] font-bold">Lieu : <%= post.location %></p>
       <p class="text-[#76818E] text-center font-bold pb-2"><i class="fa-regular fa-clock"></i> <%= post.published_at.strftime("%d/%m/%Y") %></p>
