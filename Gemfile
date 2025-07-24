@@ -31,6 +31,7 @@ gem "tailwindcss-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "dotenv-rails"
 gem "cloudinary"
+gem "sassc-rails"
 
 
 # Use Redis adapter to run Action Cable in production
