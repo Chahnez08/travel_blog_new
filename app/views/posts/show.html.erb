@@ -9,11 +9,11 @@
   <% else %>
     <p>Aucune image attachée.</p>
   <% end %>
-  <p><%= @post.content %></p>
-  <div class="flex content-end">
-    <div class="infos flex flex-row gap-3 m-7">
-    <p>Lieu : <%= @post.location %></p>
-    <p>Publié le : <%= @post.published_at.strftime("%d/%m/%Y") %></p>
+  <p class="text-[#A3677F] pt-2 tracking-wide text-2xl leading-8"><%= @post.content %></p>
+  <div class="content-end">
+    <div class="flex flex-row justify-between gap-3 m-7">
+      <p class="text-[#A3677F] pt-2 tracking-wide text-2xl leading-8"><strong>Lieu :</strong> <%= @post.location %></p>
+      <p class="text-[#A3677F] pt-2 tracking-wide text-2xl leading-8"><strong>Publié le : </strong><%= @post.published_at.strftime("%d/%m/%Y") %></p>
     </div>
   </div>
 </div>

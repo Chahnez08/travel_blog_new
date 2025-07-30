@@ -1,6 +1,6 @@
 <div
   class="hero min-h-screen mb-7 sepia-30"
-  style="background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);"
+  style="background-image: url(https://res.cloudinary.com/dwvnu18ce/image/upload/v1753909022/momiji1_qhftgi.jpg);"
 >
   <div class="hero-overlay"></div>
   <div class="hero-content text-neutral-content text-center">
@@ -9,37 +9,39 @@
       <br>
       ようこそ </h1>
       <p class="mb-5">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-        quasi. In deleniti eaque aut repudiandae et a id nisi.
       </p>
     </div>
   </div>
 </div>
 
-<div class="button ml-5">
+<div class="button ml-5 fade-in-element opacity-0 transition duration-500 ease-out">
   <% if policy(Post).create? %>
     <%= link_to "Nouvel Article", new_post_path, class: "btn border-black hover:bg-[#8e5c6e] hover:text-[#EDDDD6]" %>
   <% end %>
 </div>
 
-<h2 class="text-[#76818E] text-center font-bold text-4xl my-3">INTRODUCTION</h2>
-<div class="flex justify-center items-center w-200 text-center">
-  <p class="text-[#A3677F] pt-2 text-xl">
-  Passionnée du Japon depuis de nombreuses années, tout a commencé comme beaucoup avec les mangas et jeux vidéos.
-  Suite à ça j'ai pris des cours pour apprendre la langue et à l'université j'en ai appris plus sur la civilisation passée et présente.
-  <br><br>
-  Mon premier voyage s'est fait en 2009 et j'en ai enchainé plusieurs depuis...
-  Grâce a mes nombreux voyages j'ai appris un paquet de choses qui vous aideront a bien organiser votre premier séjour au pays du soleil levant !
-  <br><br>
-  Découvrez avec moi des petits tips pour organiser votre voyage entre transports, logements et restauration traditionnelle (options Halal/Végé).
-  <br><br>
-  一緒に行きましょう / Allons y ensemble !!!
-  </p>
+<h2 class="text-[#76818E] text-center font-bold text-4xl my-5 fade-in-element opacity-0 transition duration-500 ease-out">INTRODUCTION</h2>
+
+<div class="flex justify-center items-center fade-in-element opacity-0 transition duration-500 ease-out">
+  <div class="w-200 text-center">
+    <p class="text-[#A3677F] pt-2 tracking-wide text-2xl leading-8">
+    Passionnée du Japon depuis de nombreuses années, tout a commencé comme beaucoup avec les mangas et jeux vidéos.
+    Suite à ça j'ai pris des cours pour apprendre la langue et à l'université j'en ai appris plus sur la civilisation passée et présente.
+    <br><br>
+    Mon premier voyage s'est fait en 2009 et j'en ai enchainé plusieurs depuis...
+    Grâce à mes nombreux voyages j'ai appris un paquet de choses qui vous aideront à bien organiser votre premier séjour au pays du soleil levant !
+    <br><br>
+    Découvrez avec moi des petits tips pour organiser votre voyage entre transports, logements et restauration traditionnelle (options Halal/Végé).
+    <br><br>
+    一緒に行きましょう / Allons y ensemble !!!
+    </p>
+  </div>
 </div>
 
-<h2 class="text-[#76818E] text-center font-bold text-4xl my-3">LES POSTS</h2>
 
-<div class="animation-container">
+<h2 class="text-[#76818E] text-center font-bold text-4xl my-5 fade-in-element opacity-0 transition duration-500 ease-out">LES POSTS</h2>
+
+<div class="animation-container fade-in-element opacity-0 transition duration-500 ease-out">
   <svg class="wave-path-svg" viewBox="0 0 2000 200">
     <path id="flying-wave-path"
           d="M0,100 C100,50 150,150 200,100 S300,50 400,100 S500,150 600,100 S700,50 800,100
@@ -50,9 +52,9 @@
   </div>
 </div>
 
-<div class="grid grid-cols-2 gap-4 justify-items-center">
+<div class="grid grid-cols-2 gap-4 justify-items-center" data-controller="scroll-fade">
   <% @posts.each do |post| %>
-  <div class="bg-base-100 w-170 shadow-sm mx-auto py-5 px-3 transition delay-150 duration-300 ease-in-out scale-95 hover:scale-100 hover:sepia-25">
+  <div class="bg-base-100 w-170 shadow-sm mx-auto py-5 px-3 transition delay-150 duration-300 ease-in-out scale-95 hover:scale-100 hover:sepia-25 fade-in-element opacity-0 ">
     <%= link_to post_path(post) do %>
       <% if post.photo.attached? %>
         <%= cl_image_tag post.photo.key, class: "rounded-2xl p-[8px] h-[30vh] object-cover mb-5 mx-auto" %>
