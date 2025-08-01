@@ -19,6 +19,7 @@ before_action :authenticate_user!, except: [:index, :show]
 
   def create
     @post = current_user.posts.build(post_params)
+    @post.published_at = Time.current unless @post.published_at.present?
     authorize @post
     if @post.save
       redirect_to @post, notice: 'Article publié'
@@ -36,6 +37,7 @@ before_action :authenticate_user!, except: [:index, :show]
     @post = Post.find(params[:id])
     authorize @post
     if @post.update(post_params)
+      @post.published_at = Time.current unless @post.published_at.present?
       redirect_to @post, notice: "Article mit à jour!"
     else
       render :edit

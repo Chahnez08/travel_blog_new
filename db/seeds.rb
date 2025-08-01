@@ -9,7 +9,7 @@
 #   end
 require "open-uri"
 
-user = User.first || User.create!(email: 'demo@example.com', password: 'password', password_confirmation: 'password')
+user = User.first || User.create!(email: 'nouvel_admin@example.com', password: 'password', password_confirmation: 'password')
 puts "Utilisateur pour les seeds : #{user.email}"
 
 puts 'Création des articles de blog...'
