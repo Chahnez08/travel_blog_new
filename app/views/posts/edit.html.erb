@@ -10,7 +10,7 @@
     </div>
   <% end %>
 
-  <div class="post text-xl p-25 mx-5 border border-[#fbe1eb] rounded-lg shadow-lg flex flex-col gap-5"">
+  <div class="post text-xl p-25 mx-5 border border-[#fbe1eb] rounded-lg shadow-lg flex flex-col gap-5">
     <div>
       <%= form.label :title, "Titre :", class: "label text-[#8e5c6e] my-3" %>
       <%= form.text_field :title, class: "input input-bordered input-lg w-full" %>
@@ -18,7 +18,7 @@
 
     <div>
       <%= form.label :content, "Contenu :", class: "label text-[#8e5c6e] my-3" %>
-      <%= form.text_area :content, class: "input input-bordered input-lg w-full" %>
+      <%= form.rich_text_area :content %>
     </div>
 
     <div>

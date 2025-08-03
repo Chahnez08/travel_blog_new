@@ -9,7 +9,7 @@
   <% else %>
     <p>Aucune image attachée.</p>
   <% end %>
-  <p class="text-[#A3677F] pt-2 tracking-wide text-2xl leading-8"><%= @post.content %></p>
+  <div><%= @post.content %></div>
   <div class="content-end">
     <div class="flex flex-row justify-between gap-3 m-7">
       <p class="text-[#A3677F] pt-2 tracking-wide text-2xl leading-8"><strong>Lieu :</strong> <%= @post.location %></p>

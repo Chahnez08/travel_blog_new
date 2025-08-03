@@ -70,7 +70,6 @@
       <p class="text-[#76818E] font-bold">Lieu : <%= post.location %></p>
       <p class="text-[#76818E] text-center font-bold pb-2"><i class="fa-regular fa-clock"></i> <%= post.published_at.strftime("%d/%m/%Y") %></p>
       <hr>
-      <p class="text-[#A3677F] pt-2"><%= truncate(post.content, length:150) %></p>
     </div>
     <% end %>
       <% if policy(post).update? %>

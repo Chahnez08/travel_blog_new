@@ -5,4 +5,5 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: {minimum: 5}
   validates :content, presence: true
   validates :location, presence: true
+  has_rich_text :content
 end
