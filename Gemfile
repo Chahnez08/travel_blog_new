@@ -33,6 +33,7 @@ gem "dotenv-rails"
 gem "cloudinary"
 gem "sassc-rails"
 gem 'actiontext'
+gem "pg_search"
 
 
 # Use Redis adapter to run Action Cable in production

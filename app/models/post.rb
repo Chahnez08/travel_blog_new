@@ -6,4 +6,15 @@ class Post < ApplicationRecord
   validates :content, presence: true
   validates :location, presence: true
   has_rich_text :content
+  before_save :set_content_text
+
+  include PgSearch::Model
+  multisearchable against: [:title, :content_text]
+
+  private
+
+  def set_content_text
+    self.content_text = content.body.to_plain_text
+  end
+
 end

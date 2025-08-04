@@ -1,0 +1,12 @@
+<div class="form bg-transparent">
+  <%= form_with url: searches_path, method: :get, class: "flex flex-row items-center mt-8 " do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control input w-200 h-10 bg-[#fff7ed] border rounded-xl mr-5 text-black",
+            placeholder: "Tapez votre recherche..."
+        %>
+
+      <%= submit_tag "Recherche", name: "", class: "btn border-black hover:bg-[#8e5c6e] hover:text-[#EDDDD6] m-3" %>
+
+    <% end %>
+</div>

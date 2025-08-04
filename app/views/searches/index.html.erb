@@ -1,0 +1,38 @@
+<div class="flex justify-center">
+  <%= render "shared/searchbar" %>
+</div>
+
+
+  <div class="grid grid-cols-2 gap-4 justify-items-center" data-controller="scroll-fade">
+  <% @posts.each do |post| %>
+  <div class="bg-[#EDDFC9] w-170 mx-auto py-5 px-3 transition delay-150 duration-300 ease-in-out scale-95 hover:scale-100 hover:bg-[#FFEBCC] fade-in-element opacity-0 ">
+    <div class="photo">
+      <%= link_to post_path(post) do %>
+        <% if post.photo.attached? %>
+          <%= cl_image_tag post.photo.key, class: "p-[8px] h-[55vh] w-[100%] object-fill  mb-5 mx-auto" %>
+        <% else %>
+            <p>Aucune image attachée.</p>
+        <% end %>
+    </div>
+    <div class="text-container p-3">
+      <h2 class="text-[#76818E] text-3xl text-center font-bold card-title transition delay-150 duration-300 ease-in-out hover:text-[#8e5c6e]"><%= post.title %></h2>
+      <p class="text-[#76818E] font-bold">Lieu : <%= post.location %></p>
+      <p class="text-[#76818E] text-center font-bold pb-2"><i class="fa-regular fa-clock"></i> <%= post.published_at.strftime("%d/%m/%Y") %></p>
+      <hr>
+    </div>
+    <% end %>
+      <% if policy(post).update? %>
+        <%= link_to 'Modifier', edit_post_path(post), class:"btn border-black hover:bg-[#8e5c6e] hover:text-[#EDDDD6] m-3" %>
+      <% end %>
+      <% if policy(post).destroy? %>
+        <%= link_to 'Supprimer', post_path(post),
+          class:"btn border-black hover:bg-[#DB504A] hover:text-[#EDDDD6] m-3",
+          data: {
+            turbo_method: :delete,
+            turbo_confirm: 'Êtes-vous sûr de vouloir supprimer ce post ?'
+          }
+        %>
+      <% end %>
+  </div>
+  <% end %>
+</div>
